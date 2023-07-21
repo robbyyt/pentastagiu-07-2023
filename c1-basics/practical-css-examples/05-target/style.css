@@ -1,0 +1,51 @@
+.block {
+    width: 300px;
+    min-height: 250px;
+    position: relative;
+    margin: 20px auto;
+}
+  
+  section {
+    display: inline;
+}
+  
+  a {
+    text-decoration: none;
+    color: black;
+    float: left;
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    border-bottom-color: #fff;
+    margin-right: 10px;
+    position: relative;
+    top: 2px
+}
+  
+  div:not(:target)>a {
+    background-color: #ccc;
+}
+  
+  div:target>a {
+    background-color: white;
+    z-index: 2;
+}
+  
+  section>div {
+    background: white;
+    z-index: -2;
+    left: 0;
+    top: 30px;
+    bottom: 0;
+    right: 0;
+    padding: 20px;
+    border: 1px solid #ccc;
+}
+  
+  section:not(:target)>div {
+    position: absolute
+}
+  
+  section:target>div {
+    position: absolute;
+    z-index: -1;
+}

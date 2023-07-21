@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="../global.css" />
+    <title>Specificity</title>
+  </head>
+  <body>
+    <p>
+      If there are two or more conflicting CSS rules that point to the same
+      element, the browser follows some rules to determine which one is most
+      specific and therefore wins out. Think of specificity as a score/rank that
+      determines which style declarations are ultimately applied to an element.
+      The universal selector (*) has low specificity, while ID selectors are
+      highly specific!
+    </p>
+    <h2>Calculating specificity (a smart points system):</h2>
+    <ul id="my-list">
+      <li>
+        In-line style attribute is worth 1000 points (as seen in 01, it
+        overwrites anything)
+      </li>
+      <li>Each ID is worth 100 points</li>
+      <li>Each attribute, class or pseudo-class is worth 10 points</li>
+      <li>Each element name or pseudo-element is worth 1 point</li>
+      <li>
+        In case of equality, the last value assigned (in the stylesheet) will be
+        assigned
+      </li>
+      <li>* (the global selector) has no value</li>
+      <li>Combinators, like +, ~, > have no value</li>
+    </ul>
+    <h3>Example:</h3>
+    <div id="a">I should be green.</div>
+    <h3>Useful list of selectors</h3>
+    <iframe
+      src="https://estelle.github.io/cssmastery/selectors/selectors.html"
+    ></iframe>
+  </body>
+</html>

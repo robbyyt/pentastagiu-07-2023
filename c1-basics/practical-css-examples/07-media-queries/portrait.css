@@ -1,0 +1,9 @@
+body {
+  background-color: indigo;
+  color: white;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+}

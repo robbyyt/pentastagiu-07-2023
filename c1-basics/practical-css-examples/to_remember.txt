@@ -1,0 +1,25 @@
+- https://estelle.github.io/cssmastery - link to a great CSS course
+- declare font-size in :root when using rem
+- instead of > use :has == header:has(h1,h2)
+- always style :focus when styling hover
+- don't use !important
+- Media query properties:   
+    (min/max)-width: viewport width
+    (min/max)-height: viewport height
+    orientation: portrait(h>w) | landscape(w>h)
+    (min/max)-aspect-ratio: width/height
+    (min/max)-resolution: 72dpi | 100dpcm (dots per inch, dots per cm, dppx = dots per pixel)
+- opacity - on the whole element, alphatransparency - on the content, for example, the shadow stays
+- gradient, basically a background image, but can be used for other stuff as well (rarely)
+    linear, radial, conic, repeating-linear, repeating-radial, repeating-conic
+    linear-gradient([<angle>| to <side-or-corner>,]?[<color-stop> [, <color-hint>]?, ]# <color-stop>)
+    0deg = top, angles go clockwise
+    to top
+    to bottom
+    to left
+    to right
+    to top left
+    to top right
+    to bottom left
+    to bottom right
+- we can only animate properties with intermediate values. (NOT DISPLAY, FOR EXAMPLE)

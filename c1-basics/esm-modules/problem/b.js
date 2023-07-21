@@ -1,0 +1,1 @@
+myP.innerHTML = "Hello world";

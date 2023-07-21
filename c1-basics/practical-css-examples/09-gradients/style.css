@@ -1,0 +1,86 @@
+main {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+div {
+  flex: 0 1 27%;
+  height: 50vh;
+  margin: 10px;
+}
+
+.linear {
+  background-image: linear-gradient(rebeccapurple, palegoldenrod);
+}
+
+.radial {
+  background-image: radial-gradient(rebeccapurple, palegoldenrod);
+}
+
+.color-stop-linear {
+  background-image: linear-gradient(
+    red 0%,
+    orange 20%,
+    yellow 40%,
+    green 60%,
+    blue 80%,
+    purple 100%
+  );
+}
+
+.color-stop-radial {
+  background-image: radial-gradient(
+    red 0%,
+    orange 20%,
+    yellow 40%,
+    green 60%,
+    blue 80%,
+    purple 100%
+  );
+}
+
+.hard-stop-linear {
+  background-image: linear-gradient(
+    red 20%,
+    orange 20%,
+    orange 40%,
+    yellow 40%,
+    yellow 60%,
+    green 60%,
+    green 80%,
+    blue 80%
+  )
+}
+
+.hard-stop-radial {
+  background-image: radial-gradient(
+    red 20%,
+    orange 20%,
+    orange 40%,
+    yellow 40%,
+    yellow 60%,
+    green 60%,
+    green 80%,
+    blue 80%
+  )
+}
+
+.angle {
+  background: linear-gradient(to bottom left, rebeccapurple 47%, palegoldenrod 53%);
+}
+
+.matrix {
+  background-color: rebeccapurple;
+
+  background-image:
+    linear-gradient(
+      rgba(255, 255, 255, 0.2) 50%,
+      rgba(255, 255, 255, 0) 50%),
+    linear-gradient(to right,
+      rgba(255, 255, 255, 0.2) 50%,
+      rgba(255, 255, 255, 0) 50%);
+
+  background-size: 100px 100px, 100px 100px;
+  /* background-repeat: no-repeat; */
+}

@@ -1,0 +1,24 @@
+[id="foo"],
+[type="text"] {
+  background-color: red;
+}
+
+div[id="FOO" i],
+input[type="tExT"] {
+  background-color: lightgreen;
+}
+div[id="FOO"],
+input[type="TEXT"] {
+  background-color: blue;
+}
+
+a[target="abc"] {
+  color: red;
+}
+div {
+  width: 200px;
+}
+
+body {
+  padding-top: 2em;
+}
