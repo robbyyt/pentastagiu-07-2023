@@ -1,0 +1,71 @@
+body {
+  font-family: system-ui, serif;
+  line-height: 1.5;
+  padding-bottom: 2rem;
+  background-color: rgb(191, 165, 184);
+}
+
+main {
+  max-width: 500px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.dialog1 {
+  display: none;
+  z-index: 1000;
+  background: #e4c6b0;
+  width: 50%;
+  border: 0.1em solid rgb(81, 81, 81);
+  text-align: justify;
+}
+
+.dialog1-content {
+  margin: 0.5em;
+}
+
+dialog {
+  background: #e4c6b0;
+  position: absolute;
+  width: 50%;
+  border: 0.1em solid rgb(81, 81, 81);
+  text-align: justify;
+}
+
+.close {
+  top: 0;
+  right: 0.4rem;
+}
+
+.close:hover {
+  cursor: pointer;
+}
+
+button {
+  font-family: system-ui, serif;
+  width: 100%;
+  padding: 1em;
+  margin-top: 5%;
+  font-size: 1em;
+  font-weight: 700;
+  color: rgb(31, 31, 32);
+  background: #4591a6;
+  font-weight: 600;
+  border: 0.2em solid rgb(67, 67, 67);
+  border-radius: 0.5rem;
+  justify-self: end;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+.dialog1 {
+  margin-top: 2em;
+}
+
+.dialog2 {
+  margin-top: 5em;
+}

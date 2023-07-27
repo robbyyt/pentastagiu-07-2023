@@ -1,0 +1,15 @@
+/* :root {
+  font-size: 16px;
+} */
+
+.heading {
+  font-size: 2rem; /* 32px */
+}
+
+.sub-heading {
+  font-size: 1.5rem; /* 24px */
+}
+
+.text {
+  font-size: 1rem; /* 16px */
+}

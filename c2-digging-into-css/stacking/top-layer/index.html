@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <main>
+      <h1>Dialog Demo</h1>
+      <button onclick="window.dialog1.showModal();">Open Dialog 1</button>
+      <button onclick="window.dialog2.showModal();">Open Dialog 2</button>
+    </main>
+
+    <dialog id="dialog1" class="dialog1">
+      <h2>DIALOG 1 👋</h2>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque
+        tincidunt, leo facilisis pretium suscipit, velit mauris bibendum mauris,
+        vel dictum odio elit vel magna. Morbi rutrum, neque commodo ullamcorper
+        sollicitudin, massa nisi pharetra leo, vel dictum lacus velit at leo.
+        Nam eget dapibus augue, in euismod urna. Nam interdum risus lectus, ac
+        blandit ipsum laoreet ut.
+      </p>
+      <button onclick="window.dialog2.showModal();">Open Dialog 2</button>
+      <button onclick="window.dialog1.close();" class="close">CLOSE ❌</button>
+    </dialog>
+
+    <dialog id="dialog2" class="dialog2">
+      <h2>DIALOG 2 👋</h2>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque
+        tincidunt, leo facilisis pretium suscipit, velit mauris bibendum mauris,
+        vel dictum odio elit vel magna. Morbi rutrum, neque commodo ullamcorper
+        sollicitudin, massa nisi pharetra leo, vel dictum lacus velit at leo.
+        Nam eget dapibus augue, in euismod urna. Nam interdum risus lectus, ac
+        blandit ipsum laoreet ut.
+      </p>
+      <button onclick="window.dialog1.showModal();">Open Dialog 1</button>
+      <button onclick="window.dialog2.close();" class="close">CLOSE ❌</button>
+    </dialog>
+  </body>
+</html>
