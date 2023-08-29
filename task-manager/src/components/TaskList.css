@@ -1,0 +1,6 @@
+/* Style for TaskList container */
+.task-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
