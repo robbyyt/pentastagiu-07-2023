@@ -2,36 +2,44 @@ import { useEffect, useState } from "react";
 import Task from "./Task";
 import "./TaskList.css";
 import TaskDialogUncontrolled from "./TaskDialogUncontrolled";
-import { safeParse } from "../utils/storage";
+import { getTasks, createTask, editTask as putTask, patchTask, deleteTask } from "../services/task.service";
 
 /**
  * We want to map through the tasks and display them
  */
 
 function TaskList() {
-  const [tasks, setTasks] = useState(safeParse(localStorage.getItem('tasks'), []));
+  const [tasks, setTasks] = useState([]);
   const [isTaskDialogOpen, setIsTaskDialogOpen] = useState(false);
   const [currentlyEditedTask, setCurrentlyEditedTask] = useState(null);
 
   useEffect(() => {
-    localStorage.setItem('tasks', JSON.stringify(tasks));
-  }, [tasks]);
+    (async () => {
+      try {
+        const tasks = await getTasks();
+        setTasks(tasks);
+      } catch(err) {
+        setTasks([]);
+      }
+    })()
+  }, []);
 
-  const addTask = (name, description) => {
-    setTasks((oldTasks) => [...oldTasks, { id: Math.random(), name, description }])
+  const addTask = async (name, description) => {
+    const addedTask = await createTask(name, description);
+    setTasks([...tasks, addedTask]);
   }
 
-  const deleteTask = (id) => {
+  const handleDeleteTask = async (id) => {
+    await deleteTask(id);
     const elementIndex = tasks.findIndex((el) => el.id === id);
-
+    console.log(id, elementIndex);
     if(elementIndex === -1) return;
-
     setTasks(tasks.slice(elementIndex + 1));
   }
 
-  const editTask = (name, description) => {
-    setTasks(tasks.map(currentTask => currentTask.id === currentlyEditedTask.id ? {...currentTask, name, description} : currentTask));
-    setCurrentlyEditedTask(null);
+  const editTask = async (name, description) => {
+    const editedTask = await putTask(currentlyEditedTask.id, name, description);
+    setTasks(tasks.map(currentTask => currentTask.id === currentlyEditedTask.id ? editedTask : currentTask));
   }
 
   const handleEditClick = (id) => {
@@ -42,8 +50,9 @@ function TaskList() {
     setIsTaskDialogOpen(true);
   }
 
-  const toggleCompleted = (id) => {
-    setTasks(tasks.map(currentTask => currentTask.id === id ? {...currentTask, completed: !currentTask.completed} : currentTask));
+  const toggleCompleted = async (id, completed) => {
+    const editedTask = await patchTask(id, { completed: !completed });
+    setTasks(tasks.map(currentTask => currentTask.id === id ? editedTask : currentTask));
   }
 
   const handleClose = () => {
@@ -67,7 +76,7 @@ function TaskList() {
           <Task 
           {...task} 
           key={task.id} 
-          deleteTask={deleteTask} 
+          deleteTask={handleDeleteTask} 
           toggleCompleted={toggleCompleted}
           handleEditClick={handleEditClick}
           />

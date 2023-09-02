@@ -1,6 +1,11 @@
+import { useTasks } from "../context/task-context";
 import "./Navbar.css";
 
 function Navbar() {
+  const { tasks } = useTasks();
+  console.log(tasks);
+  const ongoingTasks = tasks.filter((task) => !task.completed);
+
   return (
     <header>
       <nav>
@@ -9,7 +14,7 @@ function Navbar() {
             <p>Home</p>
           </ul>
           <ul>
-            <p>Tasks</p>
+            <p>Tasks {Boolean(ongoingTasks.length) && (<span>{ongoingTasks.length}</span>)}</p>
           </ul>
         </li>
       </nav>

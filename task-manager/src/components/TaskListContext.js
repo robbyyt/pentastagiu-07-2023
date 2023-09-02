@@ -1,38 +1,19 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Task from "./Task";
 import "./TaskList.css";
 import TaskDialogUncontrolled from "./TaskDialogUncontrolled";
-import { safeParse } from "../utils/storage";
+import { useTasks } from "../context/task-context";
 
 /**
  * We want to map through the tasks and display them
  */
 
 function TaskList() {
-  const [tasks, setTasks] = useState(safeParse(localStorage.getItem('tasks'), []));
+  const { tasks, addTask, editTask, handleDeleteTask, toggleCompleted } = useTasks();
   const [isTaskDialogOpen, setIsTaskDialogOpen] = useState(false);
   const [currentlyEditedTask, setCurrentlyEditedTask] = useState(null);
 
-  useEffect(() => {
-    localStorage.setItem('tasks', JSON.stringify(tasks));
-  }, [tasks]);
-
-  const addTask = (name, description) => {
-    setTasks((oldTasks) => [...oldTasks, { id: Math.random(), name, description }])
-  }
-
-  const deleteTask = (id) => {
-    const elementIndex = tasks.findIndex((el) => el.id === id);
-
-    if(elementIndex === -1) return;
-
-    setTasks(tasks.slice(elementIndex + 1));
-  }
-
-  const editTask = (name, description) => {
-    setTasks(tasks.map(currentTask => currentTask.id === currentlyEditedTask.id ? {...currentTask, name, description} : currentTask));
-    setCurrentlyEditedTask(null);
-  }
+  
 
   const handleEditClick = (id) => {
     const currentItem = tasks.find(item => item.id === id);
@@ -42,8 +23,8 @@ function TaskList() {
     setIsTaskDialogOpen(true);
   }
 
-  const toggleCompleted = (id) => {
-    setTasks(tasks.map(currentTask => currentTask.id === id ? {...currentTask, completed: !currentTask.completed} : currentTask));
+  const handleEdit = (name, description) => {
+   return editTask(currentlyEditedTask.id, name, description) 
   }
 
   const handleClose = () => {
@@ -58,7 +39,7 @@ function TaskList() {
     </div>
       <TaskDialogUncontrolled 
       open={isTaskDialogOpen} 
-      onSubmitSuccess={ currentlyEditedTask ? editTask : addTask } 
+      onSubmitSuccess={ currentlyEditedTask ? handleEdit : addTask } 
       handleClose={handleClose} 
       defaultValues = {{...currentlyEditedTask}}
       />
@@ -67,7 +48,7 @@ function TaskList() {
           <Task 
           {...task} 
           key={task.id} 
-          deleteTask={deleteTask} 
+          deleteTask={handleDeleteTask} 
           toggleCompleted={toggleCompleted}
           handleEditClick={handleEditClick}
           />

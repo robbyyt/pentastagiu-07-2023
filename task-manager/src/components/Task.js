@@ -9,7 +9,7 @@ function Task({ id, name, completed, deleteTask, handleEditClick, toggleComplete
       <div className="btn-container">
         <button onClick={() => handleEditClick(id)}>Edit</button>
         <button onClick={() => deleteTask(id) }>Delete</button>
-        <button onClick={() => toggleCompleted(id) }>Toggle completed</button>
+        <button onClick={() => toggleCompleted(id, completed) }>Toggle completed</button>
       </div>
     </li>
   );

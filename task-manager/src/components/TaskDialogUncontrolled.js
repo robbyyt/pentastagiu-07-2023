@@ -11,7 +11,6 @@ function TaskDialogUncontrolled({
   const formRef = useRef();
 
   const close = () => {
-    console.log(formRef.current.reset)
     formRef.current.reset();
     handleClose();
   }
