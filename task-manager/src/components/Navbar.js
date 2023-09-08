@@ -1,9 +1,9 @@
+import { NavLink } from "react-router-dom";
 import { useTasks } from "../context/task-context";
 import "./Navbar.css";
 
 function Navbar() {
   const { tasks } = useTasks();
-  console.log(tasks);
   const ongoingTasks = tasks.filter((task) => !task.completed);
 
   return (
@@ -11,10 +11,11 @@ function Navbar() {
       <nav>
         <li>
           <ul>
-            <p>Home</p>
+            <NavLink to="/">Home</NavLink>
           </ul>
           <ul>
-            <p>Tasks {Boolean(ongoingTasks.length) && (<span>{ongoingTasks.length}</span>)}</p>
+            <NavLink to="/tasks">Tasks</NavLink>{" "}
+            {Boolean(ongoingTasks.length) && <span>{ongoingTasks.length}</span>}
           </ul>
         </li>
       </nav>
